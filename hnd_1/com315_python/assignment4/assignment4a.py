@@ -19,6 +19,7 @@ def plotTSP(paths, points, num_iters=1):
             x_cordinate.append(cordinates[i][0])
             y_cordinate.append(cordinates[i][1])
         
+        # Calculate the cost for each cordinate
         x_y_cord_cost = 0 
         for j in range(len(x_cordinate)):
             if j < len(x_cordinate) - 1:
@@ -42,7 +43,6 @@ def plotTSP(paths, points, num_iters=1):
 
 
 
-    # Calculate the cost for each cordinate
 
 
     x = []; y = []
