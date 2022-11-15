@@ -1,0 +1,2 @@
+matplotlib==3.6.2
+six==1.16.0
