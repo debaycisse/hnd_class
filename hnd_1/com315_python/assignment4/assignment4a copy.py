@@ -32,25 +32,33 @@ tk.Label(root, text="Distance to fourth City").place(x=10, y=160, height=20)
 tk.OptionMenu(root, fourth_city_distance, *hours).place(x=170, y=160, height=20)
 
 
-all_distances = [first_city_distance, second_city_distance, third_city_distance, fourth_city_distance]
+all_distances = [int(first_city_distance.get()), int(second_city_distance.get()), int(third_city_distance.get()), int(fourth_city_distance.get())]
 all_city_names = ["First City", "Second City", "Third City", "Fourth City"]
 all_city_names_by_mini = []
-min_first_all_distance = []
+all_distances_by_min = []
 
 def calculate():
-    for i in range(len(all_distances)-1):
-        mini = min(all_distances)
-        min_id = all_distances.index(mini)
-        all_distances.pop(all_distances.index(mini))
-        min_first_all_distance.append(mini)
-        all_city_names_by_mini.append(all_city_names.index(min_id))
+    for i in range(len(all_distances)):
+        minimum_val = min(all_distances)
+        minimum_id = all_distances.index(minimum_val)
+        all_distances.pop(minimum_id)
+        all_distances_by_min.append(minimum_val)
+        all_city_names_by_mini.append(all_city_names[minimum_id])
+        all_city_names.pop(minimum_id)
     
     movement_plan()
 
 def movement_plan():
     tk.Label(root, text="Suggested Travel Plan:").place(x=10, y=200)
-    for i in range(len(all_city_names_by_mini)-1):
-        tk.Label(root, text=str(all_city_names_by_mini[i])).pack()
+    for i in range(len(all_city_names_by_mini)):
+        if i == 0:
+            tk.Label(root, text=all_city_names_by_mini[i]).place(x=30, y=220, height=20)
+        elif i == 1:
+            tk.Label(root, text=all_city_names_by_mini[i]).place(x=30, y=250, height=20)
+        elif i == 2:
+            tk.Label(root, text=all_city_names_by_mini[i]).place(x=30, y=280, height=20)
+        elif i == 3:
+            tk.Label(root, text=all_city_names_by_mini[i]).place(x=30, y=310, height=20)
 
 
 
